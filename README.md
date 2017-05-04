@@ -6,10 +6,15 @@ to be updated soon.
 Group Members: ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Carl McAllansmith
+
 Chuanze(Charlie) Wang
+
 Hannah Clayton
+
 Jordon Corston
+
 Saul Ramsay
+
 Victor Ong
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
