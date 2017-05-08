@@ -105,10 +105,10 @@ int main(){
 		}
 		//Calculate the range for max and min.
 				uncertainty = (max-min)/4;
-				upperMax2 = max;
-				lowerMax2 = max-uncertainty;
-				upperMin2 = min+uncertainty;
-				lowerMin2 = min;
+				upperMax3 = max;
+				lowerMax3 = max-uncertainty;
+				upperMin3 = min+uncertainty;
+				lowerMin3 = min;
 	}
 	
 	return 0;
