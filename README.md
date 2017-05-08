@@ -27,6 +27,9 @@ Progress Reports.
 If you think I'm missing anything please let me know and we can add it to Mondays meeting. 
 I will ignore the plan for next week and we can include that in the Monday meetings.
 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Week Two
+
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Week One Progress Report: 
