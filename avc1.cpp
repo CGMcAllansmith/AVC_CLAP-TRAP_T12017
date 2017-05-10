@@ -6,42 +6,42 @@ int main()
   printf(" Hello\n");
   init();
   int count = 0;
-  char pix[32];
-  char wh[32];
+  char pix[32];   //set pixel array to 32 wide
+  char wh[32];    //for white pixel array
   double err = 0.0;
-  int nwp =0 ;
-  int v_left = 0;
-  int v_right = 0;
+  int nwp =0 ; //number of white pixels
+  int v_left = 0; // left motor
+  int v_right = 0;  // right motor
   
   while(count < 8000)
 	{
 		take_picture();
 		display_picture(0,0);
-		// get pixel values and  decide if pixels are white
+		
 		for ( int i = 0 ; i < 32 ;i++)
 		{
 			pix[i] = get_pixel(120,i*10,3);
 			wh[i] = 0;
-			if ( pix[i] > 90)
+			if ( pix[i] > 120)// get pixel values and  decide if pixels are white
 			{
 				wh[i] = 1;
 			}
 		}
-		// calculate how far line is from the centre and
-		// how many white pixel are there
+		
+		
 		err = 0.0;
 		nwp = 0;
 		for ( int i = 0 ; i < 32 ;i++)
 		{
 			if(wh[i]==1)
 			{
-				err = err + (i-16);
-				nwp = nwp + 1;
+				err = err + (i-16);// calculate how far line is from the centre and
+				nwp = nwp + 1;// how many white pixel are there
 			}
         }
         err = err/((double)nwp);
         double scale = 1.0;
-        v_left = 60 + (int)(err*scale);
+        v_left = 60 + (int)(err*scale);  //base motor speed is 60 which should be approx 1.17V
         v_right = 60 - (int)(err*scale);
         set_motor(1,v_left);
         set_motor(2,v_right);
