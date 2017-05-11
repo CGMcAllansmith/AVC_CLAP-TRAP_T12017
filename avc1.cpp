@@ -1,4 +1,6 @@
+
 #include <stdio.h>
+#include <time.h>
 #include "E101.h"
 
 int main()
@@ -10,8 +12,8 @@ int main()
   char wh[32];    //for white pixel array
   double err = 0.0;
   double nwp =0 ; //number of white pixels
-  double v_left = 0; // left motor
-  double v_right = 0;  // right motor
+  int v_left = 0; // left motor
+  int v_right = 0;  // right motor
   
   while(count < 8000)
 	{
@@ -39,12 +41,7 @@ int main()
 				nwp = nwp + 1;// how many white pixel are there
 			}
         }
-        err = err/nwp;
-        double scale = 1.0;
-        v_left = 120 + (int) (err*scale);  //base motor speed is 60 which should be approx 1.17V
-        v_right = 120 - (int) (err*scale);
-        set_motor(1,v_left);
-        set_motor(2,v_right);
+        
         
 		// print all arrays
 		//for ( int i = 0 ; i < 32 ;i++)
@@ -54,8 +51,15 @@ int main()
 		{
 			printf("%d ",wh[i]);
         }		
-		printf("\n");
-		printf("err=%f nwp=%d v_left=%d v_righ=%d\n",err,nwp,v_left,v_right);
+		err = err/nwp;
+        double scale = 1.0;
+        v_left = 120 + (int) (err*scale);  //base motor speed is 60 which should be approx 1.17V
+        v_right = 120 - (int) (err*scale);
+        set_motor(1,v_left);
+        set_motor(2,v_right);
+        
+        printf("\n");
+		printf("err=%f nwp=%f v_left=%d v_righ=%d\n",err,nwp,v_left,v_right);
 		
 		sleep1(1,0);
 		count++;
