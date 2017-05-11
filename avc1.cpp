@@ -9,9 +9,9 @@ int main()
   char pix[32];   //set pixel array to 32 wide
   char wh[32];    //for white pixel array
   double err = 0.0;
-  int nwp =0 ; //number of white pixels
-  int v_left = 0; // left motor
-  int v_right = 0;  // right motor
+  double nwp =0 ; //number of white pixels
+  double v_left = 0; // left motor
+  double v_right = 0;  // right motor
   
   while(count < 8000)
 	{
@@ -39,10 +39,10 @@ int main()
 				nwp = nwp + 1;// how many white pixel are there
 			}
         }
-        err = err/((double)nwp);
+        err = err/nwp;
         double scale = 1.0;
-        v_left = 60 + (int)(err*scale);  //base motor speed is 60 which should be approx 1.17V
-        v_right = 60 - (int)(err*scale);
+        v_left = 30 + (err*scale);  //base motor speed is 60 which should be approx 1.17V
+        v_right = 30 - (err*scale);
         set_motor(1,v_left);
         set_motor(2,v_right);
         
