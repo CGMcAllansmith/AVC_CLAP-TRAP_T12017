@@ -22,7 +22,7 @@ int main()
 		
 		for ( int i = 0 ; i < 32 ;i++)
 		{
-			pix[i] = get_pixel(120,i*10,3);
+			pix[i] = get_pixel(127,i*10,3);
 			wh[i] = 0;
 			if ( pix[i] > 120)// get pixel values and  decide if pixels are white
 			{
@@ -40,7 +40,7 @@ int main()
 				err = err + (i-16);// calculate how far line is from the centre and
 				nwp = nwp + 1;// how many white pixel are there
 			}
-        }
+                }
         
         
 		// print all arrays
@@ -50,13 +50,19 @@ int main()
 		for ( int i = 0 ; i < 32 ;i++)
 		{
 			printf("%d ",wh[i]);
-        }		
-		err = err/nwp;
+                }		
+	err = err/nwp;
         double scale = 1.0;
+	if (nwp>0) {
         v_left = 120 + (int) (err*scale);  //base motor speed is 60 which should be approx 1.17V
         v_right = 120 - (int) (err*scale);
         set_motor(1,v_left);
         set_motor(2,v_right);
+	}
+	if (nwp=0) {
+		set_motor(1,-60);
+		set_motor(2,60);
+	}
         
         printf("\n");
 		printf("err=%f nwp=%f v_left=%d v_right=%d\n",err,nwp,v_left,v_right);
