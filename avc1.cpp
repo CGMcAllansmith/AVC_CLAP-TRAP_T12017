@@ -59,7 +59,7 @@ int main()
         set_motor(2,v_right);
         
         printf("\n");
-		printf("err=%f nwp=%f v_left=%d v_righ=%d\n",err,nwp,v_left,v_right);
+		printf("err=%f nwp=%f v_left=%d v_right=%d\n",err,nwp,v_left,v_right);
 		
 		sleep1(1,0);
 		count++;
