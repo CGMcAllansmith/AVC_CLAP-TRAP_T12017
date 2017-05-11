@@ -41,8 +41,8 @@ int main()
         }
         err = err/nwp;
         double scale = 1.0;
-        v_left = 120 + (err*scale);  //base motor speed is 60 which should be approx 1.17V
-        v_right = 120 - (err*scale);
+        v_left = 120 + (int) (err*scale);  //base motor speed is 60 which should be approx 1.17V
+        v_right = 120 - (int) (err*scale);
         set_motor(1,v_left);
         set_motor(2,v_right);
         
