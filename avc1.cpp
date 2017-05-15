@@ -13,7 +13,7 @@ int main()
   double nwp =0 ; //number of white pixels
   double v_left = 0; // left motor
   double v_right = 0;  // right motor
-  float kp = 0.5;
+  float kp = 0.5; //This is the PID, 'Proportionality'
   int proportional_signal =0;
   
   
