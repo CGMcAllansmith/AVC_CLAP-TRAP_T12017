@@ -1,4 +1,3 @@
-
 #include <stdio.h>
 #include <time.h>
 #include "E101.h"
@@ -12,8 +11,11 @@ int main()
   char wh[32];    //for white pixel array
   double err = 0.0;
   double nwp =0 ; //number of white pixels
-  int v_left = 0; // left motor
-  int v_right = 0;  // right motor
+  double v_left = 0; // left motor
+  double v_right = 0;  // right motor
+  float kp = 0.5;
+  int proportional_signal =0;
+  
   
   while(count < 8000)
 	{
@@ -22,7 +24,7 @@ int main()
 		
 		for ( int i = 0 ; i < 32 ;i++)
 		{
-			pix[i] = get_pixel(127,i*10,3);
+			pix[i] = get_pixel(120,i*10,3);
 			wh[i] = 0;
 			if ( pix[i] > 120)// get pixel values and  decide if pixels are white
 			{
@@ -32,16 +34,33 @@ int main()
 		
 		
 		err = 0.0;
-		nwp = 0;
+		nwp = 0.0;
 		for ( int i = 0 ; i < 32 ;i++)
 		{
 			if(wh[i]==1)
 			{
-				err = err + (i-16);// calculate how far line is from the centre and
 				nwp = nwp + 1;// how many white pixel are there
+				err = err + (i-16)*nwp;// calculate how far line is from the centre and
+				proportional_signal = err*kp;
+        //double scale = 1.0;
+				v_left = 30 + proportional_signal;  //base motor speed is 60 which should be approx 1.17V
+				v_right = 30 - proportional_signal;
+				set_motor(1,v_left);
+				set_motor(2,v_right);
+				//err = err/nwp; //not sure why but replaced it but *nwp above
 			}
-                }
-        
+			else{
+				nwp = nwp ;// how many white pixel are there
+				err = err + (i-16)*nwp;// calculate how far line is from the centre and
+				proportional_signal = err*kp;
+				v_left = 30 - proportional_signal;  //base motor speed is 60 which should be approx 1.17V
+				v_right = 30 + proportional_signal;
+				set_motor(1,v_left);
+				set_motor(2,v_right);
+			}
+				
+        }
+  
         
 		// print all arrays
 		//for ( int i = 0 ; i < 32 ;i++)
@@ -50,22 +69,9 @@ int main()
 		for ( int i = 0 ; i < 32 ;i++)
 		{
 			printf("%d ",wh[i]);
-                }		
-	err = err/nwp;
-        double scale = 1.0;
-	if (nwp>0) {
-        v_left = 120 + (int) (err*scale);  //base motor speed is 60 which should be approx 1.17V
-        v_right = 120 - (int) (err*scale);
-        set_motor(1,v_left);
-        set_motor(2,v_right);
-	}
-	if (nwp=0) {
-		set_motor(1,-60);
-		set_motor(2,60);
-	}
-        
-        printf("\n");
-		printf("err=%f nwp=%f v_left=%d v_right=%d\n",err,nwp,v_left,v_right);
+        }		
+		printf("\n");
+		printf("err=%f nwp=%d v_left=%d v_righ=%d\n",err,(int)nwp,(int)v_left,(int)v_right);
 		
 		sleep1(1,0);
 		count++;
