@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <time.h>
 #include "E101.h"
 
 int main()
@@ -12,7 +13,11 @@ int main()
   double nwp =0 ; //number of white pixels
   double v_left = 0; // left motor
   double v_right = 0;  // right motor
+<<<<<<< HEAD
   float kp = 0.5;
+=======
+  float kp = 0.5; //This is the PID, 'Proportionality'
+>>>>>>> 962e19a9762cfa06e26e551f1233317d85d4e436
   int proportional_signal =0;
   
   
@@ -42,8 +47,13 @@ int main()
 				err = err + (i-16)*nwp;// calculate how far line is from the centre and
 				proportional_signal = err*kp;
         //double scale = 1.0;
+<<<<<<< HEAD
 				v_left = 30 + proportional_signal;  //base motor speed is 60 which should be approx 1.17V
 				v_right = 30 - proportional_signal;
+=======
+				v_left = 1 + proportional_signal;  //base motor speed is 60 which should be approx 1.17V
+				v_right = 1 - proportional_signal;
+>>>>>>> 962e19a9762cfa06e26e551f1233317d85d4e436
 				set_motor(1,v_left);
 				set_motor(2,v_right);
 				//err = err/nwp; //not sure why but replaced it but *nwp above
@@ -60,6 +70,7 @@ int main()
 				
         }
 <<<<<<< HEAD
+<<<<<<< HEAD
         err = err/nwp;
         double scale = 1.0;
         v_left = 120 + (err*scale);  //base motor speed is 60 which should be approx 1.17V
@@ -69,6 +80,9 @@ int main()
 =======
   
 >>>>>>> Carls_work
+=======
+  
+>>>>>>> 962e19a9762cfa06e26e551f1233317d85d4e436
         
 		// print all arrays
 		//for ( int i = 0 ; i < 32 ;i++)
