@@ -43,8 +43,8 @@ int main()
 				err = err + (i-16)*nwp;// calculate how far line is from the centre and
 				proportional_signal = err*kp;
         //double scale = 1.0;
-				v_left = 30 + proportional_signal;  //base motor speed is 60 which should be approx 1.17V
-				v_right = 30 - proportional_signal;
+				v_left = 190 + proportional_signal;  //base motor speed is 60 which should be approx 1.17V
+				v_right = 190 - proportional_signal;
 				set_motor(1,v_left);
 				set_motor(2,v_right);
 				//err = err/nwp; //not sure why but replaced it but *nwp above
@@ -53,8 +53,8 @@ int main()
 				nwp = nwp ;// how many white pixel are there
 				err = err + (i-16)*nwp;// calculate how far line is from the centre and
 				proportional_signal = err*kp;
-				v_left = 30 - proportional_signal;  //base motor speed is 60 which should be approx 1.17V
-				v_right = 30 + proportional_signal;
+				v_left = 190 - proportional_signal;  //base motor speed is 60 which should be approx 1.17V
+				v_right = 190 + proportional_signal;
 				set_motor(1,v_left);
 				set_motor(2,v_right);
 			}
