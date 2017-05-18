@@ -19,8 +19,8 @@ int main()
   return 0;*/
   
   int count = 0;
-  char pix[32];   //set pixel array to 32 wide
-  char wh[32];    //for white pixel array
+  int pix[32];   //set pixel array to 32 wide
+  int wh[32];    //for white pixel array
   double err = 0.0;
   double nwp =0 ; //number of white pixels
   double scale = 2.0;
