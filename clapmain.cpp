@@ -49,8 +49,8 @@ int main()
 		if (nwp>0)
         {
           err = err/nwp;
-          v_left =  50 + (int)(err*scale);  //base motor speed is 60 which should be approx 1.17V
-          v_right = 50 - (int)(err*scale);
+          v_left =  50 - (int)(err*scale);  //base motor speed is 60 which should be approx 1.17V
+          v_right = 50 + (int)(err*scale);
           if(DEBUG){
 		      printf("err=%f nwp=%d v_left=%d v_righ=%d\n",err,(int)nwp,(int)v_left,(int)v_right);
 		  }
